@@ -108,7 +108,7 @@ local function changeFloodSettings(chat_id, screm)
 			end
 		elseif screm < 0 then
 			new = db:hincrby(hash, 'MaxFlood', -1)
-			if new <= 0 then
+			if new < 0 then
 				db:hincrby(hash, 'MaxFlood', 1)
 				return i18n("%d is not a valid value!\n"):format(new)
 					.. ("The value should be higher than 2 and lower then 26")
